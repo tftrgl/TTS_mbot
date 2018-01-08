@@ -62,7 +62,19 @@
 		else {
 		var secs = duration.substring(duration.indexOf("T")+1, duration.indexOf("S"))
 		}
+	     if (hrs == '') {
+		hrs = '0'     
+	     }
+	      if (mins == '') {
+		mins = '0'     
+	     }
+	      if (secs == '') {
+		secs = '0'     
+	     }
         var length = parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs)
+	if (isNaN(length)) {
+	error()	
+	}
       }
 	  
 	  nxhr.open('GET', 'https://www.googleapis.com/youtube/v3/videos?id=' + id + '&part=snippet&key=AIzaSyCclSO_nPjM8BA_kqiT7lLOF0fMjw5m5MM', false)
