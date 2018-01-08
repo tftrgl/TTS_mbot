@@ -47,28 +47,28 @@
 		
         var duration = data.items[0].contentDetails.duration
 		var hrs  = duration.substring(duration.indexOf("T")+1, duration.indexOf("H"))
-		if (hrs != ''){
+		if (hrs.length != 0){
         var mins = duration.substring(duration.indexOf("H")+1, duration.indexOf("M"))
 		}
 		else {
 		var mins = duration.substring(duration.indexOf("T")+1, duration.indexOf("M"))
 		}
-		if (mins != '') {
+		if (mins.length != 0) {
         var secs = duration.substring(duration.indexOf("M")+1, duration.indexOf("S"))
 		}
-		else if (hrs != '') {
+		else if (hrs.length != 0) {
 		var secs = duration.substring(duration.indexOf("H")+1, duration.indexOf("S"))
 		}
 		else {
 		var secs = duration.substring(duration.indexOf("T")+1, duration.indexOf("S"))
 		}
-	     if (hrs == '') {
+	     if (hrs.length == 0) {
 		hrs = '0'     
 	     }
-	      if (mins == '') {
+	      if (mins.length == 0) {
 		mins = '0'     
 	     }
-	      if (secs == '') {
+	      if (secs.length == 0) {
 		secs = '0'     
 	     }
         var length = parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs)
