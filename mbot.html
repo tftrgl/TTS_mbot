@@ -1,0 +1,84 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <script>
+  
+      function error() {
+      window.location.href = "https://tjakubo2.github.io/TTS_dadjoke/error"
+      }
+	  
+	  
+      var url = window.location.href
+	  var request = url.substring(url.indexOf("=")+1)
+	  
+      var xhr = new XMLHttpRequest()
+	  var nxhr = new XMLHttpRequest()
+	  var axhr = new XMLHttpRequest()
+	  
+	  axhr.open('GET', 'https://decapi.me/youtube/videoid?search=$(' + request + ')', false)
+	  axhr.send()
+	  
+	  if (axhr.status != 200) {
+        error()
+		
+      } else {
+	    var id = axhr.responseText
+	  if (id == 'Invalid video ID or search string.') {
+	    error()
+	  }
+	  }
+	  
+	  
+      xhr.open('GET', 'https://www.googleapis.com/youtube/v3/videos?id=' + id + '&part=contentDetails&key=AIzaSyCclSO_nPjM8BA_kqiT7lLOF0fMjw5m5MM', false)
+      xhr.send()
+
+      if (xhr.status != 200) {
+        error()
+		
+      } else {
+		
+        var data = JSON.parse(xhr.responseText)
+		
+		
+        var duration = data.items[0].contentDetails.duration
+		var hrs  = duration.substring(duration.indexOf("T")+1, duration.indexOf("H"))
+		if (hrs != ''){
+        var mins = duration.substring(duration.indexOf("H")+1, duration.indexOf("M"))
+		}
+		else {
+		var mins = duration.substring(duration.indexOf("T")+1, duration.indexOf("M"))
+		}
+		if (mins != '') {
+        var secs = duration.substring(duration.indexOf("M")+1, duration.indexOf("S"))
+		}
+		else if (hrs != '') {
+		var secs = duration.substring(duration.indexOf("H")+1, duration.indexOf("S"))
+		}
+		else {
+		var secs = duration.substring(duration.indexOf("T")+1, duration.indexOf("S"))
+		}
+        var length = parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs)
+      }
+	  
+	  nxhr.open('GET', 'https://www.googleapis.com/youtube/v3/videos?id=' + id + '&part=snippet&key=AIzaSyCclSO_nPjM8BA_kqiT7lLOF0fMjw5m5MM', false)
+      nxhr.send()
+	  
+	  if (nxhr.status != 200) {
+        error()
+		
+      } else {
+	    var ndata = JSON.parse(nxhr.responseText)
+		var name = ndata.items[0].snippet.title
+	  }
+	  alert(name)
+	  
+  </script>
+
+</body>
+
+</html>
