@@ -9,7 +9,7 @@
   <script>
   
       function error() {
-      window.location.href = "https://tjakubo2.github.io/TTS_dadjoke/error"
+      window.location.href = "https://tftrgl.github.io/TTS_mbot/error"
       }
 	  
 	  
@@ -75,7 +75,8 @@
 	    var ndata = JSON.parse(nxhr.responseText)
 		var name = ndata.items[0].snippet.title
 	  }
-	  alert(name)
+	  
+	  window.location.href = "https://tftrgl.github.io/TTS_mbot/success?length=" + length + "&name=" + name + "&id=" + id
 	  
   </script>
 
