@@ -73,7 +73,7 @@
 	     }
         var length = parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs)
 	if (isNaN(length)) {
-	error()	
+	//error()	
 	}
       }
 	  
@@ -87,7 +87,9 @@
 	    var ndata = JSON.parse(nxhr.responseText)
 		var name = ndata.items[0].snippet.title
 	  }
-	  alert(length)
+	  alert(hrs)
+	  alert(mins)
+	  alert(secs)
 	  //window.location.href = "https://tftrgl.github.io/TTS_mbot/success?length=" + length + "&name=" + name + "&id=" + id
 	  
   </script>
