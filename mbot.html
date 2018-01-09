@@ -7,7 +7,6 @@
 <body>
 
   <script>
-
       function error() {
       window.location.href = "https://tftrgl.github.io/TTS_mbot/error"
       }
@@ -64,10 +63,10 @@
 	     if (isNaN(parseInt(hrs))) {
 		hrs = '0'     
 	     }
-	      if (isNaN(parseInt(hrs))) {
+	      if (isNaN(parseInt(mins))) {
 		mins = '0'     
 	     }
-	      if (isNaN(parseInt(hrs))) {
+	      if (isNaN(parseInt(secs))) {
 		secs = '0'     
 	     }
         var length = parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs)
@@ -87,7 +86,6 @@
 		var name = ndata.items[0].snippet.title
 	  }
 	  window.location.href = "https://tftrgl.github.io/TTS_mbot/success?length=" + length + "&name=" + name + "&id=" + id
-
   </script>
 
 </body>
