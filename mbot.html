@@ -7,7 +7,11 @@
 <body>
 
   <script>
-  
+  function partA() {
+  window.setTimeout(partB,1000);
+}
+function partB() {
+	
       function error() {
       window.location.href = "https://tftrgl.github.io/TTS_mbot/error"
       }
@@ -87,7 +91,7 @@
 		var name = ndata.items[0].snippet.title
 	  }
 	  window.location.href = "https://tftrgl.github.io/TTS_mbot/success?length=" + length + "&name=" + name + "&id=" + id
-	  
+	  }
   </script>
 
 </body>
