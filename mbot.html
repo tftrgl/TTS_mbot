@@ -1,3 +1,21 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Explore
+ @tftrgl
+ Sign out
+ Watch 0
+  Star 0  Fork 0 tftrgl/TTS_mbot
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
+Branch: master Find file Copy pathTTS_mbot/mbot.html
+76494ab  6 minutes ago
+@tftrgl tftrgl Update mbot.html
+1 contributor
+RawBlameHistory     
+100 lines (76 sloc)  2.5 KB
 <html>
 
 <head>
@@ -36,7 +54,6 @@
 	  
       xhr.open('GET', 'https://www.googleapis.com/youtube/v3/videos?id=' + id + '&part=contentDetails&key=AIzaSyCclSO_nPjM8BA_kqiT7lLOF0fMjw5m5MM', false)
       xhr.send()
-
       if (xhr.status != 200) {
         error()
 		
@@ -47,33 +64,33 @@
 		
         var duration = data.items[0].contentDetails.duration
 		var hrs  = duration.substring(duration.indexOf("T")+1, duration.indexOf("H"))
-		if (hrs.length != 0){
+		if (!isNaN(parseInt(hrs))){
         var mins = duration.substring(duration.indexOf("H")+1, duration.indexOf("M"))
 		}
 		else {
 		var mins = duration.substring(duration.indexOf("T")+1, duration.indexOf("M"))
 		}
-		if (mins.length != 0) {
+		if (!isNaN(parseInt(mins))) {
         var secs = duration.substring(duration.indexOf("M")+1, duration.indexOf("S"))
 		}
-		else if (hrs.length != 0) {
+		else if (!isNaN(parseInt(hrs))) {
 		var secs = duration.substring(duration.indexOf("H")+1, duration.indexOf("S"))
 		}
 		else {
 		var secs = duration.substring(duration.indexOf("T")+1, duration.indexOf("S"))
 		}
-	     if (hrs.length == 0) {
+	     if (isNaN(parseInt(hrs))) {
 		hrs = '0'     
 	     }
-	      if (mins.length == 0) {
+	      if (isNaN(parseInt(hrs))) {
 		mins = '0'     
 	     }
-	      if (secs.length == 0) {
+	      if (isNaN(parseInt(hrs))) {
 		secs = '0'     
 	     }
         var length = parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs)
 	if (isNaN(length)) {
-	//error()	
+	error()	
 	}
       }
 	  
@@ -87,13 +104,22 @@
 	    var ndata = JSON.parse(nxhr.responseText)
 		var name = ndata.items[0].snippet.title
 	  }
-	  alert(hrs)
-	  alert(mins)
-	  alert(secs)
-	  //window.location.href = "https://tftrgl.github.io/TTS_mbot/success?length=" + length + "&name=" + name + "&id=" + id
+	  window.location.href = "https://tftrgl.github.io/TTS_mbot/success?length=" + length + "&name=" + name + "&id=" + id
 	  
   </script>
 
 </body>
 
 </html>
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About
